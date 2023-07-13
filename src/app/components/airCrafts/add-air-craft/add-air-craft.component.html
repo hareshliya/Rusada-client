@@ -1,0 +1,49 @@
+<div class="container my-5">
+    <h4 *ngIf="id" class="mb-3">Edit New Air Craft</h4>
+    <h4 *ngIf="!id" class="mb-3">Add New Air Craft</h4>
+
+    <div class="row">
+        <div class="col-6">
+            <form #from="ngForm" (ngSubmit)="addAirCraft()">
+                <div class="mb-3">
+                    <label for="make" class="form-label">Make</label>
+                    <input type="text" class="form-control" id="make" 
+                    name="make" [(ngModel)]="newAirCraft.make">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="model" class="form-label">Model</label>
+                    <input type="text" class="form-control" id="model"
+                    name="model" [(ngModel)]="newAirCraft.model">
+                </div>
+        
+                <div class="mb-3">
+                    <label for="registration" class="form-label">Registration</label>
+                    <input type="text" class="form-control" id="registration"
+                    name="registration" [(ngModel)]="newAirCraft.registration">
+                </div>
+        
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="location"
+                    name="location" [(ngModel)]="newAirCraft.location">
+                </div>
+
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date</label>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" [formControl]="selectedDate" (dateChange)="handleDateChange($event)" placeholder="Choose a date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                </div>
+        
+                <div class="mb-3">
+                    <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

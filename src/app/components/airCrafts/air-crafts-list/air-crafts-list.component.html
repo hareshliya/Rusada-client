@@ -1,0 +1,31 @@
+<div class="containe my-5">
+    <h4 class="mb=3">Air Crafts</h4>
+
+    <input type="text"  [(ngModel)]="searchTerm" placeholder="Search.." name="search">
+    <button type="button" (click)="onSearch()"><i class="fa fa-search"></i></button>
+
+    <table class="table" *ngIf="airCrafts">
+        <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Registration</th>
+                <th>Localtion</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let aircraft of airCrafts">
+                <td>{{ aircraft.make }}</td>
+                <td>{{ aircraft.model }}</td>
+                <td>{{ aircraft.registration }}</td>
+                <td>{{ aircraft.location }}</td>
+                <td><a [routerLink]="['/aircrafts', 'view', aircraft.id]"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                <td><a [routerLink]="['/aircrafts', 'edit', aircraft.id]"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                <td><button type="button" class="btn btn-light" (click)="deleteAirCraft(aircraft.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
